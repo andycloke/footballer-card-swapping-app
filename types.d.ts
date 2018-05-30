@@ -3,7 +3,7 @@ declare module 'react-native-swiper-flatlist' {
     data?: Array<any>;
     children?: JSX.Element[];
     renderItem?: (props: any) => React.Component;
-    onMomentumScrollEnd?: (e: any) => {};
+    onMomentumScrollEnd?: (e: { index: number }) => void;
     vertical?: boolean;
     index?: number;
     renderAll?: boolean;
