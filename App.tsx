@@ -19,7 +19,7 @@ export const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#1A1854',
-    paddingTop: 40,
+    paddingTop: 30,
     flex: 1
   }
 });
