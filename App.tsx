@@ -2,13 +2,13 @@ import * as React from 'react';
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
-import PlayersCarousel from './features/players/components/PlayersCarousel';
+import PlayerCarousel from './features/players/components/PlayerCarousel';
 
 export default class App extends React.Component<{}> {
   render() {
     return (
       <View style={styles.container}>
-        <PlayersCarousel />
+        <PlayerCarousel />
       </View>
     );
   }
