@@ -9,19 +9,27 @@ import {
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
 type Props = {
+  initialIndex: number;
   images: Array<ImageSourcePropType>;
   backgroundColor?: string;
+  handleIndexChange: (index: number) => void;
 };
 
 class ImageCarousel extends React.PureComponent<Props> {
   static defaultProps = {
     backgroundColor: 'white'
   };
+  handleIndexChange = ({ index }: { index: number }) => {
+    this.props.handleIndexChange(index);
+  };
   render() {
-    const { images, backgroundColor } = this.props;
+    const { images, backgroundColor, initialIndex } = this.props;
     return (
       <View style={[styles.container, { backgroundColor }]}>
-        <SwiperFlatList>
+        <SwiperFlatList
+          index={initialIndex}
+          onMomentumScrollEnd={this.handleIndexChange}
+        >
           {images.map((image: ImageSourcePropType, i: number) => (
             <Image key={i} source={image} style={styles.image} />
           ))}
@@ -35,12 +43,12 @@ export const { width, height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    width,
-    height
+    flex: 1,
+    justifyContent: 'flex-end'
   },
   image: {
     width,
-    height,
+    height: height * 0.9,
     resizeMode: 'cover'
   }
 });
