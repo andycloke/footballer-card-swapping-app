@@ -24,4 +24,5 @@
 * I organised the project as I would a larger project, by including a 'common' directory for common, reusable components that could be used by different features within the app. E.g. the `<ImageCarousel/>` component is found here, then imported into `<PlayersCarousel/>` for a specific use.
 * I added an optional `backgroundColor` prop to `<ImageCarousel/>` to make it more flexible.
 * I added snapshot tests using `react-test-renderer`. These should protect agaisnt future regressions.
+* `react-native-swiper-flatlist` was chosen because it uses React Native's `<Flatlist/>` which is more performant than the `<ScrollView/>` used by a lot of swippable card/ list libraries. It also seems well maintained (last updated 20 days ago + no open issues), and to have sensible props.
 * `react-native-swiper-flatlist`'s exported component didn't have TypeScript types so I added them myself in `types.d.ts`.
