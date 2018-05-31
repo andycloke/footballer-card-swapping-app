@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 import ImageCarousel from '../../common/components/ImageCarousel';
+import { colors } from '../../../styles';
 import PlayerSwap from './PlayerSwap';
 import PLAYER_IMAGES from '../data/playerImages';
 
@@ -54,7 +55,7 @@ class PlayerMenu extends React.PureComponent<{}, State> {
         ) : (
           <ImageCarousel
             initialIndex={0}
-            backgroundColor="#1A1854"
+            backgroundColor={colors.bunting}
             images={PLAYER_IMAGES}
             handleIndexChange={this.updateActiveIndex}
           />
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: 'flex-end',
     justifyContent: 'center',
-    backgroundColor: '#75FB96',
+    backgroundColor: colors.mintGreen,
     height: 35,
     width: 75,
     margin: 12,
