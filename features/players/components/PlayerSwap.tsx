@@ -16,50 +16,44 @@ type Props = {
 };
 
 export default class PlayerSwap extends React.PureComponent<Props> {
-  linearAnimatedValue: Animated.Value = new Animated.Value(0);
-  cyclicalAnimatedValue: Animated.Value = new Animated.Value(0);
+  animatedValue: Animated.Value = new Animated.Value(0);
 
   componentDidMount() {
     this.animate();
   }
-  animate() {
-    this.cyclicalAnimatedValue.setValue(0);
-    Animated.parallel([
-      Animated.timing(this.cyclicalAnimatedValue, {
-        toValue: 1,
-        duration: ANIMATION_DURATION_ONE_WAY_MS * 2,
-        easing: ANIMATION_EASING_FUNCTION
-      }),
-      Animated.sequence([
-        Animated.timing(this.linearAnimatedValue, {
-          toValue: 1,
-          duration: ANIMATION_DURATION_ONE_WAY_MS,
-          easing: ANIMATION_EASING_FUNCTION
-        }),
-        Animated.timing(this.linearAnimatedValue, {
-          toValue: 0,
-          duration: ANIMATION_DURATION_ONE_WAY_MS,
-          easing: ANIMATION_EASING_FUNCTION
-        })
-      ])
-    ]).start(() => this.animate());
-  }
+  animate = () => {
+    this.animatedValue.setValue(0);
+    Animated.timing(this.animatedValue, {
+      toValue: 1,
+      duration: ANIMATION_DURATION_MS,
+      easing: ANIMATION_EASING_FUNCTION
+    }).start(this.animate);
+  };
 
   render() {
     const { playerImages } = this.props;
-    const player1XTranslation = this.linearAnimatedValue.interpolate({
-      inputRange: LINEAR_INPUT_RANGE,
+    const player1XTranslation = this.animatedValue.interpolate({
+      inputRange: INPUT_RANGE,
       outputRange: [
         -HORIZONTAL_TRANSLATE_DISTANCE,
+        0,
+        HORIZONTAL_TRANSLATE_DISTANCE,
+        0,
+        -HORIZONTAL_TRANSLATE_DISTANCE
+      ]
+    });
+    const player2XTranslation = this.animatedValue.interpolate({
+      inputRange: INPUT_RANGE,
+      outputRange: [
+        HORIZONTAL_TRANSLATE_DISTANCE,
+        0,
+        -HORIZONTAL_TRANSLATE_DISTANCE,
+        0,
         HORIZONTAL_TRANSLATE_DISTANCE
       ]
     });
-    const player2XTranslation = player1XTranslation.interpolate({
-      inputRange: LINEAR_INPUT_RANGE,
-      outputRange: [1, 0]
-    });
-    const player1Scale = this.cyclicalAnimatedValue.interpolate({
-      inputRange: CYCLICAL_INPUT_RANGE,
+    const player1Scale = this.animatedValue.interpolate({
+      inputRange: INPUT_RANGE,
       outputRange: [
         NORMAL_SCALE,
         MAX_SCALE,
@@ -68,8 +62,8 @@ export default class PlayerSwap extends React.PureComponent<Props> {
         NORMAL_SCALE
       ]
     });
-    const player2Scale = this.cyclicalAnimatedValue.interpolate({
-      inputRange: CYCLICAL_INPUT_RANGE,
+    const player2Scale = this.animatedValue.interpolate({
+      inputRange: INPUT_RANGE,
       outputRange: [
         NORMAL_SCALE,
         MIN_SCALE,
@@ -78,8 +72,8 @@ export default class PlayerSwap extends React.PureComponent<Props> {
         NORMAL_SCALE
       ]
     });
-    const player1ZIndex = this.cyclicalAnimatedValue.interpolate({
-      inputRange: CYCLICAL_INPUT_RANGE,
+    const player1ZIndex = this.animatedValue.interpolate({
+      inputRange: INPUT_RANGE,
       outputRange: [
         HIGHER_Z_INDEX,
         HIGHER_Z_INDEX,
@@ -88,8 +82,8 @@ export default class PlayerSwap extends React.PureComponent<Props> {
         LOWER_Z_INDEX
       ]
     });
-    const player2ZIndex = this.cyclicalAnimatedValue.interpolate({
-      inputRange: CYCLICAL_INPUT_RANGE,
+    const player2ZIndex = this.animatedValue.interpolate({
+      inputRange: INPUT_RANGE,
       outputRange: [
         LOWER_Z_INDEX,
         LOWER_Z_INDEX,
@@ -130,7 +124,7 @@ export default class PlayerSwap extends React.PureComponent<Props> {
     );
   }
 }
-const ANIMATION_DURATION_ONE_WAY_MS = 2000;
+const ANIMATION_DURATION_MS = 4000;
 const ANIMATION_EASING_FUNCTION = Easing.linear;
 const { width, height } = Dimensions.get('window');
 const HORIZONTAL_TRANSLATE_DISTANCE = width * 0.25;
@@ -139,9 +133,7 @@ const MAX_SCALE = 1.2;
 const MIN_SCALE = 0.8;
 const LOWER_Z_INDEX = 1;
 const HIGHER_Z_INDEX = LOWER_Z_INDEX + 1;
-
-const LINEAR_INPUT_RANGE = [0, 1];
-const CYCLICAL_INPUT_RANGE = [0, 0.25, 0.5, 0.75, 1];
+const INPUT_RANGE = [0, 0.25, 0.5, 0.75, 1];
 
 const styles = StyleSheet.create({
   container: {
