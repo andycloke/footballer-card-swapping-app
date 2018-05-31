@@ -17,7 +17,7 @@ type Props = {
   handleIndexChange?: (index: number) => void;
 };
 
-class ImageCarousel extends React.PureComponent<Props> {
+export class ImageCarousel extends React.PureComponent<Props> {
   static defaultProps = {
     initialIndex: 0,
     backgroundColor: 'white',
