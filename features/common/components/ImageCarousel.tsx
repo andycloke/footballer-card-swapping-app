@@ -12,18 +12,25 @@ type Props = {
   initialIndex: number;
   images: Array<ImageSourcePropType>;
   backgroundColor?: string;
+  imageBackgroundColor?: string;
   handleIndexChange: (index: number) => void;
 };
 
 class ImageCarousel extends React.PureComponent<Props> {
   static defaultProps = {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    imageBackgroundColor: 'white'
   };
   handleIndexChange = ({ index }: { index: number }) => {
     this.props.handleIndexChange(index);
   };
   render() {
-    const { images, backgroundColor, initialIndex } = this.props;
+    const {
+      images,
+      backgroundColor,
+      imageBackgroundColor,
+      initialIndex
+    } = this.props;
     return (
       <View style={[styles.container, { backgroundColor }]}>
         <SwiperFlatList
@@ -31,7 +38,17 @@ class ImageCarousel extends React.PureComponent<Props> {
           onMomentumScrollEnd={this.handleIndexChange}
         >
           {images.map((image: ImageSourcePropType, i: number) => (
-            <Image key={i} source={image} style={styles.image} />
+            <View key={i} style={styles.child}>
+              <Image
+                source={image}
+                style={[
+                  styles.image,
+                  {
+                    backgroundColor: imageBackgroundColor
+                  }
+                ]}
+              />
+            </View>
           ))}
         </SwiperFlatList>
       </View>
@@ -46,9 +63,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end'
   },
-  image: {
+  child: {
+    height,
     width,
-    height: height * 0.9,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  image: {
+    width: width,
+    height: height * 0.6,
     resizeMode: 'cover'
   }
 });
