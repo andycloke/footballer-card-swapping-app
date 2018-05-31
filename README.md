@@ -35,4 +35,3 @@
 
 * Handle device being turned landscape / lock it in Portrait depending on project requirements.
 * When returning from swapping view to carousel, active index shouldn't reset to 0.
-* Cache imaages to avoid them flashing white initially.
