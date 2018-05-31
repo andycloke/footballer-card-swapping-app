@@ -1,16 +1,34 @@
 import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  ImageSourcePropType
+} from 'react-native';
 
 import ImageCarousel from '../../common/components/ImageCarousel';
 import { colors } from '../../../styles';
 import PlayerSwap from './PlayerSwap';
 import PLAYER_IMAGES from '../data/playerImages';
 
+type Props = {
+  players?: [ImageSourcePropType, ImageSourcePropType];
+};
+
 type State = {
   activeIndex: number;
   swapping: boolean;
 };
-class PlayerMenu extends React.PureComponent<{}, State> {
+
+/* At the moment a default prop is being used to supply the player images, but in reality they'd
+be retrieved from a backend service / the user's device */
+
+class PlayerMenu extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    players: PLAYER_IMAGES
+  };
+
   state = {
     activeIndex: 0,
     swapping: false
@@ -30,6 +48,7 @@ class PlayerMenu extends React.PureComponent<{}, State> {
   };
 
   render() {
+    const { players } = this.props;
     const { swapping, activeIndex } = this.state;
     return (
       <View style={styles.container}>
@@ -45,21 +64,22 @@ class PlayerMenu extends React.PureComponent<{}, State> {
           </TouchableOpacity>
           )}
         </View>
-        {this.state.swapping ? (
-          <PlayerSwap
-            playerImages={[
-              PLAYER_IMAGES[activeIndex],
-              PLAYER_IMAGES[(activeIndex + 1) % PLAYER_IMAGES.length]
-            ]}
-          />
-        ) : (
-          <ImageCarousel
-            initialIndex={0}
-            backgroundColor={colors.bunting}
-            images={PLAYER_IMAGES}
-            handleIndexChange={this.updateActiveIndex}
-          />
-        )}
+        {players &&
+          (swapping ? (
+            <PlayerSwap
+              playerImages={[
+                players[activeIndex],
+                players[(activeIndex + 1) % players.length]
+              ]}
+            />
+          ) : (
+            <ImageCarousel
+              initialIndex={0}
+              backgroundColor={colors.bunting}
+              images={players}
+              handleIndexChange={this.updateActiveIndex}
+            />
+          ))}
       </View>
     );
   }
