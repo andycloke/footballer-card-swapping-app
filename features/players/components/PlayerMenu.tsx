@@ -7,7 +7,7 @@ import {
   ImageSourcePropType
 } from 'react-native';
 
-import ImageCarousel from '../../common/components/ImageCarousel';
+import { ImageCarousel, Button } from '../../common';
 import { colors } from '../../../styles';
 import PlayerSwap from './PlayerSwap';
 import PLAYER_IMAGES from '../data/playerImages';
@@ -53,15 +53,14 @@ class PlayerMenu extends React.PureComponent<Props, State> {
     return (
       <View style={styles.container}>
         <View>
-          <TouchableOpacity
+          <Button
             onPress={this.handleButtonPress}
-            style={[
+            buttonStyle={[
               styles.button,
               { alignSelf: swapping ? 'flex-start' : 'flex-end' }
             ]}
-          >
-            <Text style={styles.buttonText}>{swapping ? 'Back' : 'Next'}</Text>
-          </TouchableOpacity>
+            text={swapping ? 'Back' : 'Next'}
+          />
           )}
         </View>
         {players &&
@@ -93,17 +92,8 @@ const styles = StyleSheet.create({
     position: 'relative'
   },
   button: {
-    alignSelf: 'flex-end',
-    justifyContent: 'center',
-    backgroundColor: colors.mintGreen,
     height: 35,
     width: 75,
-    margin: 12,
-    borderRadius: 5
-  },
-  buttonText: {
-    fontSize: 18,
-    textAlign: 'center',
-    color: 'white'
+    margin: 12
   }
 });
