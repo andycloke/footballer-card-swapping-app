@@ -7,6 +7,7 @@ import {
   ImageSourcePropType
 } from 'react-native';
 import SwiperFlatList from 'react-native-swiper-flatlist';
+import ImageCacheWrapper from './ImageCacheWrapper';
 
 type Props = {
   images: Array<ImageSourcePropType>;
@@ -80,4 +81,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ImageCarousel;
+export default ImageCacheWrapper(ImageCarousel as any);
