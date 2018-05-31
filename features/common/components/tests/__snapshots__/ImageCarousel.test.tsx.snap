@@ -5,8 +5,8 @@ exports[`ImageCarousel renders a list of images 1`] = `
   style={
     Array [
       Object {
-        "height": 1334,
-        "width": 750,
+        "flex": 1,
+        "justifyContent": "flex-end",
       },
       Object {
         "backgroundColor": "white",
@@ -22,36 +22,84 @@ exports[`ImageCarousel renders a list of images 1`] = `
       autoplayLoop={false}
       data={
         Array [
-          <Image
-            source={1}
+          <Component
             style={
               Object {
+                "alignItems": "center",
                 "height": 1334,
-                "resizeMode": "cover",
+                "justifyContent": "center",
                 "width": 750,
               }
             }
-          />,
-          <Image
-            source={1}
+          >
+            <Image
+              source={1}
+              style={
+                Array [
+                  Object {
+                    "height": 800.4,
+                    "resizeMode": "cover",
+                    "width": 750,
+                  },
+                  Object {
+                    "backgroundColor": "white",
+                  },
+                ]
+              }
+            />
+          </Component>,
+          <Component
             style={
               Object {
+                "alignItems": "center",
                 "height": 1334,
-                "resizeMode": "cover",
+                "justifyContent": "center",
                 "width": 750,
               }
             }
-          />,
-          <Image
-            source={1}
+          >
+            <Image
+              source={1}
+              style={
+                Array [
+                  Object {
+                    "height": 800.4,
+                    "resizeMode": "cover",
+                    "width": 750,
+                  },
+                  Object {
+                    "backgroundColor": "white",
+                  },
+                ]
+              }
+            />
+          </Component>,
+          <Component
             style={
               Object {
+                "alignItems": "center",
                 "height": 1334,
-                "resizeMode": "cover",
+                "justifyContent": "center",
                 "width": 750,
               }
             }
-          />,
+          >
+            <Image
+              source={1}
+              style={
+                Array [
+                  Object {
+                    "height": 800.4,
+                    "resizeMode": "cover",
+                    "width": 750,
+                  },
+                  Object {
+                    "backgroundColor": "white",
+                  },
+                ]
+              }
+            />
+          </Component>,
         ]
       }
       disableVirtualization={false}
@@ -95,16 +143,32 @@ exports[`ImageCarousel renders a list of images 1`] = `
             ]
           }
         >
-          <Image
-            source={1}
+          <View
             style={
               Object {
+                "alignItems": "center",
                 "height": 1334,
-                "resizeMode": "cover",
+                "justifyContent": "center",
                 "width": 750,
               }
             }
-          />
+          >
+            <Image
+              source={1}
+              style={
+                Array [
+                  Object {
+                    "height": 800.4,
+                    "resizeMode": "cover",
+                    "width": 750,
+                  },
+                  Object {
+                    "backgroundColor": "white",
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
         <View
           style={
