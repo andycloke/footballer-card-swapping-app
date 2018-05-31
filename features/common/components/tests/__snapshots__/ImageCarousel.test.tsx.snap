@@ -39,7 +39,7 @@ exports[`ImageCarousel renders a list of images 1`] = `
                   Object {
                     "height": 800.4,
                     "resizeMode": "cover",
-                    "width": 750,
+                    "width": 712.5,
                   },
                   Object {
                     "backgroundColor": "white",
@@ -65,7 +65,7 @@ exports[`ImageCarousel renders a list of images 1`] = `
                   Object {
                     "height": 800.4,
                     "resizeMode": "cover",
-                    "width": 750,
+                    "width": 712.5,
                   },
                   Object {
                     "backgroundColor": "white",
@@ -91,7 +91,7 @@ exports[`ImageCarousel renders a list of images 1`] = `
                   Object {
                     "height": 800.4,
                     "resizeMode": "cover",
-                    "width": 750,
+                    "width": 712.5,
                   },
                   Object {
                     "backgroundColor": "white",
@@ -160,7 +160,7 @@ exports[`ImageCarousel renders a list of images 1`] = `
                   Object {
                     "height": 800.4,
                     "resizeMode": "cover",
-                    "width": 750,
+                    "width": 712.5,
                   },
                   Object {
                     "backgroundColor": "white",
