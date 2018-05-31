@@ -1,16 +1,11 @@
 import * as React from 'react';
-import {
-  StyleSheet,
-  Dimensions,
-  Image,
-  View,
-  ImageSourcePropType
-} from 'react-native';
+import { StyleSheet, Dimensions, Image, View } from 'react-native';
+import { RequireSource } from 'expo';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 import ImageCacheWrapper from './ImageCacheWrapper';
 
 type Props = {
-  images: Array<ImageSourcePropType>;
+  images: Array<RequireSource>;
   initialIndex?: number;
   backgroundColor?: string;
   imageBackgroundColor?: string;
@@ -42,7 +37,7 @@ export class ImageCarousel extends React.PureComponent<Props> {
           index={initialIndex}
           onMomentumScrollEnd={this.handleIndexChange}
         >
-          {images.map((image: ImageSourcePropType, i: number) => (
+          {images.map((image: RequireSource, i: number) => (
             <View key={i} style={styles.child}>
               <Image
                 source={image}
