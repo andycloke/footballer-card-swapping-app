@@ -9,20 +9,24 @@ import {
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
 type Props = {
-  initialIndex: number;
   images: Array<ImageSourcePropType>;
+  initialIndex?: number;
   backgroundColor?: string;
   imageBackgroundColor?: string;
-  handleIndexChange: (index: number) => void;
+  handleIndexChange?: (index: number) => void;
 };
 
 class ImageCarousel extends React.PureComponent<Props> {
   static defaultProps = {
+    initialIndex: 0,
     backgroundColor: 'white',
     imageBackgroundColor: 'white'
   };
   handleIndexChange = ({ index }: { index: number }) => {
-    this.props.handleIndexChange(index);
+    const { handleIndexChange } = this.props;
+    if (handleIndexChange && typeof handleIndexChange === 'function') {
+      handleIndexChange(index);
+    }
   };
   render() {
     const {
