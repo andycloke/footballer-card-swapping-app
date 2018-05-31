@@ -10,6 +10,7 @@
 4.  Start the app with `yarn start`
 5.  Install the [Expo](https://expo.io/) app on your phone (and sign up) if you haven't already done so.
 6.  Press 'S' in the running packager, enter your phone numberand click 'Enter' in the running packager to send an expo link to your phone number. Then click this in your phone to run the app i Expo. You'll need to be on the same WiFi network as your computer.
+7. Run tests with `yarn test`
 
 ## Requirements
 
