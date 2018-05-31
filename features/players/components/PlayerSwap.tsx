@@ -5,14 +5,14 @@ import {
   View,
   Animated,
   Dimensions,
-  Easing,
-  ImageSourcePropType
+  Easing
 } from 'react-native';
+import { RequireSource } from 'expo';
 
 import ImageCarousel from '../../common/components/ImageCarousel';
 
 type Props = {
-  playerImages: [ImageSourcePropType, ImageSourcePropType];
+  playerImages: [RequireSource, RequireSource];
 };
 
 export default class PlayerSwap extends React.PureComponent<Props> {

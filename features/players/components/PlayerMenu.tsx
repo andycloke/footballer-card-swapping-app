@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  ImageSourcePropType
-} from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { RequireSource } from 'expo';
 
 import { ImageCarousel, Button } from '../../common';
 import { colors } from '../../../styles';
@@ -13,7 +8,7 @@ import PlayerSwap from './PlayerSwap';
 import PLAYER_IMAGES from '../data/playerImages';
 
 type Props = {
-  players?: [ImageSourcePropType, ImageSourcePropType];
+  players?: [RequireSource, RequireSource];
 };
 
 type State = {
