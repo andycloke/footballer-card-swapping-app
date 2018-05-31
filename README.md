@@ -29,9 +29,10 @@
 * `react-native-swiper-flatlist`'s exported component didn't have TypeScript types so I added them myself in `types.d.ts`.
 * I added snapshot tests using `react-test-renderer`. These should protect agaisnt future regressions.
 * I implemented the animation using RN's Animated API in the `<PlayerSwap>` component. One animated value property drives the animation of the scale, zIndex and movement of both player cards.
-* To get to second screen I used component State in the PlayerMenu component to render a different component. With more time I would use proper routing using React Router so that views were properly organised at different locations, and other benefites such as a working back button on Android.
+* To get to second screen I used component State in the PlayerMenu component to render a different component. With more time I would use proper routing using React Router so that views were properly organised at different locations, and other benefits such as a working back button on Android.
 
 ## Next Steps / Improvements
 
 * Handle device being turned landscape / lock it in Portrait depending on project requirements.
+* When returning from swapping view to carousel, active index shouldn't reset to 0.
 * Cache imaages to avoid them flashing white initially.
