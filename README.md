@@ -1,4 +1,6 @@
-# Footballer Card Swapping App
+# Footballer Card Swapping 
+
+![Demo gif](https://media.giphy.com/media/mMEw4B71Lhmg2bFbjZ/giphy.gif)
 
 ## Instructions
 
